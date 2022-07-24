@@ -1,0 +1,25 @@
+resolver:
+  url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/18/28.yaml
+
+packages:
+- persistent-migration-0.3.0
+- package-version-0.1.0.0
+- git: https://github.com/bank-manager/servant.git
+  commit: f5ddc63199197ecf55e6f82f1465a29a1f26bc7d
+  subdirs:
+    - servant
+    - servant-swagger
+    - servant-server
+    - servant-client
+    - servant-client-core
+    - servant-auth/servant-auth-swagger
+    - servant-auth/servant-auth-server
+    - servant-auth/servant-auth-client
+    - servant-auth/servant-auth
+- git: ssh://git@github.com/bank-manager/servant-tools.git
+  commit: 56841f3e43a88d899745f85bec0907c3e7dea17c
+- git: ssh://git@github.com/bank-manager/user-service.git
+  commit: 1cd5e448370090d41becdae88884419728100e94
+  subdirs:
+    - user-service-client
+    - user-service-schema

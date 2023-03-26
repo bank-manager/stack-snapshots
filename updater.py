@@ -24,7 +24,7 @@ def update_snapshot(snapshot, repository, git_hash):
          continue
 
       print
-      if package["git"] == f"ssh://git@github.com/{repository}.git" and package["commit"] != git_has:
+      if package["git"] == f"ssh://git@github.com/{repository}.git" and package["commit"] != git_hash:
          should_write_file = True
          package["commit"] = git_hash
 

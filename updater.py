@@ -18,6 +18,7 @@ def get_latest_version(version: str):
 def update_snapshot(snapshot, repository, git_hash):
    packages = snapshot["packages"]
 
+   should_write_file = True
    for package in packages:
       if isinstance(package, str):
          continue
@@ -25,7 +26,10 @@ def update_snapshot(snapshot, repository, git_hash):
       print
       if package["git"] == f"ssh://git@github.com/{repository}.git":
          print("update hash")
+         should_write_file = True
          package["commit"] = git_hash
+
+   return should_write_file
 
 
 
@@ -33,8 +37,13 @@ def main(version, repo, git_hash):
 
    input_path, output_path = get_latest_version(version)
    data = yaml.safe_load(input_path.read_text())
-   update_snapshot(data, repo, git_hash)
-   output_path.write_text(yaml.safe_dump(data))
+   should_write = update_snapshot(data, repo, git_hash)
+   if should_write:
+      # Avoid writing snapshots when there are no changes
+      print("Writing new snapshot")
+      output_path.write_text(yaml.safe_dump(data))
+   else:
+      print("No changes made not writing a new file")
 
    pass
 

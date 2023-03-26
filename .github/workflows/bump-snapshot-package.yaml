@@ -1,6 +1,8 @@
 name: Bump Snapshot Package
 
 on:
+  repository_dispatch:
+    types: [bump-snapshot-package]
   workflow_dispatch:
     inputs:
       lts_release:
@@ -15,7 +17,26 @@ on:
 
 
 jobs:
-  bump:
+  bump-auto:
+    if: ${{ github.event_name == 'repository_dispatch' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - run: |
+          python -m pip install pyyaml==5.4.1
+          python updater.py ${{ github.event.client_payload.lts_release }} ${{ github.event.client_payload.repo }} ${{ github.event.client_payload.git_hash }}
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          default_author: github_actions
+          message: 'New LTS release ${{ github.event.client_payload.lts_release }} ${{ github.event.client_payload.repo }} ${{ github.event.client_payload.git_hash }}'
+          new_branch: testing
+
+  bump-manual:
+    if: ${{ github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

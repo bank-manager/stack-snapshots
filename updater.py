@@ -18,7 +18,7 @@ def get_latest_version(version: str):
 def update_snapshot(snapshot, repository, git_hash):
    packages = snapshot["packages"]
 
-   should_write_file = True
+   should_write_file = False
    for package in packages:
       if isinstance(package, str):
          continue

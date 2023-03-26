@@ -16,11 +16,15 @@ on:
 
 jobs:
   bump:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
       - run: |
-          python3 updater.py ${{ github.event.inputs.lts_release }} ${{ github.event.inputs.repo }} ${{ github.event.inputs.git_hash }}
+          python -m pip install pyyaml==5.4.1
+          python updater.py ${{ github.event.inputs.lts_release }} ${{ github.event.inputs.repo }} ${{ github.event.inputs.git_hash }}
       - name: Commit changes
         uses: EndBug/add-and-commit@v9
         with:

@@ -33,7 +33,6 @@ jobs:
         with:
           default_author: github_actions
           message: 'New LTS release ${{ github.event.client_payload.lts_release }} ${{ github.event.client_payload.repo }} ${{ github.event.client_payload.git_hash }}'
-          new_branch: testing
 
   bump-manual:
     if: ${{ github.event_name == 'workflow_dispatch' }}
@@ -51,4 +50,3 @@ jobs:
         with:
           default_author: github_actions
           message: 'New LTS release ${{ github.event.inputs.lts_release }} ${{ github.event.inputs.repo }} ${{ github.event.inputs.git_hash }}'
-          new_branch: testing

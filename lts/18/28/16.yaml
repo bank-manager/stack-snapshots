@@ -2,7 +2,7 @@ packages:
 - persistent-migration-0.3.0
 - package-version-0.1.0.0
 - commit: f5ddc63199197ecf55e6f82f1465a29a1f26bc7d
-  git: https://github.com/bank-manager/servant.git
+  git: ssh://git@github.com/bank-manager/servant.git
   subdirs:
   - servant
   - servant-swagger

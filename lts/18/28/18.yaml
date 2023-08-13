@@ -1,0 +1,28 @@
+packages:
+- persistent-migration-0.3.0
+- package-version-0.1.0.0
+- commit: e410451cf2c2081f4416de69b2409ac704732011
+  git: ssh://git@github.com/bank-manager/servant.git
+  subdirs:
+  - servant
+  - servant-swagger
+  - servant-server
+  - servant-client
+  - servant-client-core
+  - servant-auth/servant-auth-swagger
+  - servant-auth/servant-auth-server
+  - servant-auth/servant-auth-client
+  - servant-auth/servant-auth
+- commit: 56841f3e43a88d899745f85bec0907c3e7dea17c
+  git: ssh://git@github.com/bank-manager/servant-tools.git
+- commit: 8798aea911f7169f9a4013f94dc694b1c1f235a0
+  git: ssh://git@github.com/bank-manager/user-service.git
+  subdirs:
+  - user-service-client
+  - user-service-schema
+- commit: 348ff0e99df85c4360d6ac95d1690a585f87ecbe
+  git: ssh://git@github.com/bank-manager/truelayer.git
+- commit: 9463126599ffefc15c690e8f11a523c535122d64
+  git: ssh://git@github.com/bank-manager/tier-config.git
+resolver:
+  url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/18/28.yaml

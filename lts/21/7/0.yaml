@@ -1,0 +1,6 @@
+resolver:
+  url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/21/7.yaml
+
+packages:
+- persistent-migration-0.3.0
+- package-version-0.3

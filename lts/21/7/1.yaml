@@ -1,0 +1,12 @@
+resolver:
+  url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/21/7.yaml
+
+packages:
+- persistent-migration-0.3.0
+- package-version-0.3
+- servant-auth-server-0.4.8.0
+- servant-auth-swagger-0.2.10.2
+- commit: 56841f3e43a88d899745f85bec0907c3e7dea17c
+  git: ssh://git@github.com/bank-manager/servant-tools.git
+- commit: 9463126599ffefc15c690e8f11a523c535122d64
+  git: ssh://git@github.com/bank-manager/tier-config.git
